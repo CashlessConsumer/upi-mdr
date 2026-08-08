@@ -20,6 +20,7 @@ import hi from "./locales/hi";
 import ta from "./locales/ta";
 import mr from "./locales/mr";
 import gu from "./locales/gu";
+import kn from "./locales/kn";
 import bn from "./locales/bn";
 import te from "./locales/te";
 
@@ -29,6 +30,7 @@ const translations: Partial<Record<Locale, TranslationDictionary>> = {
   ta,
   mr,
   gu,
+  kn,
   bn,
   te,
 };
