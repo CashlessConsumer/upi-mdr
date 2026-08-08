@@ -59,7 +59,7 @@ export default function ActSection() {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-4 space-y-8">
+    <div className="w-full max-w-4xl mx-auto p-1 sm:p-4 space-y-6 sm:space-y-8">
       <div className="text-center space-y-2">
         <h2 className="text-2xl font-bold">{t("What You Can Do About It")}</h2>
         <p className="text-stone-400">
@@ -69,21 +69,21 @@ export default function ActSection() {
 
       <div className="grid gap-6">
         {/* 1. Write to MP */}
-        <div className="bg-stone-800/60 rounded-xl p-6 border border-stone-700/50 space-y-4">
-          <div className="flex items-center justify-between">
-            <h3 className="text-lg font-bold flex items-center gap-2">
+        <div className="bg-stone-800/60 rounded-xl p-4 sm:p-6 border border-stone-700/50 space-y-4">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <h3 className="text-lg font-bold flex items-center gap-2 min-w-0">
               <span className="w-8 h-8 rounded-full bg-rose-800 flex items-center justify-center text-sm">1</span>
               {t("Write to Your MP")}
             </h3>
             <button
               onClick={() => copyToClipboard(mpLetter, setCopiedMP)}
-              className="flex items-center gap-1 text-sm px-3 py-1.5 rounded-lg bg-stone-700 hover:bg-stone-600 transition-all"
+              className="flex items-center gap-1 text-sm px-3 py-1.5 rounded-lg bg-stone-700 hover:bg-stone-600 transition-all self-start sm:self-auto"
             >
               {copiedMP ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
               {copiedMP ? t("Copied!") : t("Copy Letter")}
             </button>
           </div>
-          <div className="text-sm text-stone-300 leading-relaxed whitespace-pre-wrap font-mono bg-stone-900/50 p-4 rounded-lg max-h-60 overflow-y-auto">
+          <div className="text-sm text-stone-300 leading-relaxed whitespace-pre-wrap break-words font-mono bg-stone-900/50 p-3 sm:p-4 rounded-lg max-h-60 overflow-y-auto">
             {t(mpLetter)}
           </div>
           <p className="text-xs text-stone-500">
@@ -95,21 +95,21 @@ export default function ActSection() {
         </div>
 
         {/* 2. File RTI */}
-        <div className="bg-stone-800/60 rounded-xl p-6 border border-stone-700/50 space-y-4">
-          <div className="flex items-center justify-between">
-            <h3 className="text-lg font-bold flex items-center gap-2">
+        <div className="bg-stone-800/60 rounded-xl p-4 sm:p-6 border border-stone-700/50 space-y-4">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <h3 className="text-lg font-bold flex items-center gap-2 min-w-0">
               <span className="w-8 h-8 rounded-full bg-rose-800 flex items-center justify-center text-sm">2</span>
               {t("File an RTI with NPCI")}
             </h3>
             <button
               onClick={() => copyToClipboard(rtiText, setCopiedRTI)}
-              className="flex items-center gap-1 text-sm px-3 py-1.5 rounded-lg bg-stone-700 hover:bg-stone-600 transition-all"
+              className="flex items-center gap-1 text-sm px-3 py-1.5 rounded-lg bg-stone-700 hover:bg-stone-600 transition-all self-start sm:self-auto"
             >
               {copiedRTI ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
               {copiedRTI ? t("Copied!") : t("Copy RTI")}
             </button>
           </div>
-          <div className="text-sm text-stone-300 leading-relaxed whitespace-pre-wrap font-mono bg-stone-900/50 p-4 rounded-lg max-h-60 overflow-y-auto">
+          <div className="text-sm text-stone-300 leading-relaxed whitespace-pre-wrap break-words font-mono bg-stone-900/50 p-3 sm:p-4 rounded-lg max-h-60 overflow-y-auto">
             {t(rtiText)}
           </div>
           <p className="text-xs text-stone-500">
@@ -122,7 +122,7 @@ export default function ActSection() {
         </div>
 
         {/* 3. Share */}
-        <div className="bg-stone-800/60 rounded-xl p-6 border border-stone-700/50 space-y-4">
+        <div className="bg-stone-800/60 rounded-xl p-4 sm:p-6 border border-stone-700/50 space-y-4">
           <div className="flex items-center gap-2">
             <span className="w-8 h-8 rounded-full bg-rose-800 flex items-center justify-center text-sm">3</span>
             <h3 className="text-lg font-bold">{t("Share This Site")}</h3>
@@ -130,7 +130,7 @@ export default function ActSection() {
           <p className="text-sm text-stone-400">
             {t("Share with someone who uses UPI daily. Most people don't know they're about to be taxed.")}
           </p>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <button
               onClick={() => {
                 const text = "Did you know UPI is getting a tax? See how much it will cost you and what you can do about it: [URL]";

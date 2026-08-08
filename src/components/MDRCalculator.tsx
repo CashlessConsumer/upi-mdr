@@ -44,20 +44,20 @@ export default function MDRCalculator() {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-4 space-y-8">
+    <div className="w-full max-w-4xl mx-auto p-1 sm:p-4 space-y-6 sm:space-y-8">
       {/* Header */}
       <div className="text-center space-y-2">
-        <div className="flex items-center justify-center gap-2 text-3xl font-bold">
+        <div className="flex items-center justify-center gap-2 text-2xl sm:text-3xl font-bold text-center">
           <Calculator className="w-8 h-8 text-rose-500" />
           <span>{t("UPI MDR Impact Calculator")}</span>
         </div>
-        <p className="text-lg text-stone-400">
+        <p className="text-base sm:text-lg text-stone-400">
           {t("See how much the new {{rate}}% MDR will cost you each year", { rate: mdrRate * 100 })}
         </p>
       </div>
 
       {/* Income Selector */}
-      <div className="bg-stone-800/50 rounded-xl p-6 space-y-4 border border-stone-700/50">
+      <div className="bg-stone-800/50 rounded-xl p-4 sm:p-6 space-y-4 border border-stone-700/50">
         <label className="flex items-center gap-2 text-lg font-medium">
           <IndianRupee className="w-5 h-5 text-emerald-400" />
           {t("Your Annual Income")}
@@ -80,8 +80,8 @@ export default function MDRCalculator() {
       </div>
 
       {/* Category Selector */}
-      <div className="bg-stone-800/50 rounded-xl p-6 space-y-4 border border-stone-700/50">
-        <div className="flex items-center justify-between">
+      <div className="bg-stone-800/50 rounded-xl p-4 sm:p-6 space-y-4 border border-stone-700/50">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <label className="text-lg font-medium">{t("Where you spend")}</label>
           <div className="flex gap-2 text-sm">
             <button
@@ -137,13 +137,13 @@ export default function MDRCalculator() {
       </div>
 
       {showDetails && (
-        <div className="bg-stone-800/50 rounded-xl p-6 space-y-3 border border-stone-700/50">
+        <div className="bg-stone-800/50 rounded-xl p-4 sm:p-6 space-y-3 border border-stone-700/50">
           <label className="text-sm font-medium">
             {t("Override annual spends (₹) — defaults based on average Indian household")}
           </label>
           {categories.map((cat) => (
-            <div key={cat.label} className="flex items-center gap-3">
-              <span className="w-40 text-sm truncate">{cat.label}</span>
+            <div key={cat.label} className="flex flex-col gap-1.5 sm:flex-row sm:items-center sm:gap-3">
+              <span className="w-full sm:w-40 text-sm truncate">{t(cat.label)}</span>
               <input
                 type="number"
                 value={customSpends[cat.label] || cat.annualSpend}
@@ -162,7 +162,7 @@ export default function MDRCalculator() {
       )}
 
       {/* Result */}
-      <div className="bg-stone-800 rounded-xl p-6 space-y-6 border border-stone-600/50 shadow-xl">
+      <div className="bg-stone-800 rounded-xl p-4 sm:p-6 space-y-6 border border-stone-600/50 shadow-xl">
         <div className="text-center pb-4 border-b border-stone-700">
           <div className="text-sm text-stone-400 mb-1">
             {t("Your annual UPI spend")}

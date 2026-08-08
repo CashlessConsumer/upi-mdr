@@ -85,9 +85,9 @@ export default function TimelineSection() {
   const { t } = useI18n();
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-4">
+    <div className="w-full max-w-4xl mx-auto p-1 sm:p-4">
       <div className="mb-8">
-        <h2 className="text-2xl font-bold flex items-center gap-2">
+        <h2 className="text-xl sm:text-2xl font-bold flex items-start gap-2">
           <Calendar className="w-6 h-6 text-red-400" />
           {t("The MDR on UPI — Timeline")}
         </h2>
@@ -105,17 +105,17 @@ export default function TimelineSection() {
             />
             <button
               onClick={() => setExpanded(expanded === i ? null : i)}
-              className={`w-full text-left rounded-lg border bg-stone-900/50 p-4 transition-colors hover:bg-stone-900 ${
+              className={`w-full text-left rounded-lg border bg-stone-900/50 p-3 sm:p-4 transition-colors hover:bg-stone-900 ${
                 expanded === i ? "border-red-500/40" : "border-stone-800"
               }`}
             >
-              <div className="flex items-center justify-between gap-3">
-                <div className="flex items-center gap-3 flex-wrap">
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex items-start gap-2 sm:items-center sm:gap-3 flex-wrap min-w-0">
                   <span className="text-xs font-mono text-stone-500">{entry.date}</span>
                   <span className={`text-[10px] font-bold uppercase tracking-wide px-2 py-0.5 rounded border ${kindStyle[entry.kind]}`}>
                     {t(entry.kind)}
                   </span>
-                  <span className="font-semibold text-stone-200">{t(entry.title)}</span>
+                  <span className="font-semibold text-stone-200 break-words">{t(entry.title)}</span>
                 </div>
                 <ChevronDown
                   className={`size-4 text-stone-500 flex-shrink-0 transition-transform ${expanded === i ? "rotate-180" : ""}`}

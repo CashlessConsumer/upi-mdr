@@ -125,15 +125,15 @@ export default function BossFight() {
   if (gameOver) {
     const totalDefeated = defeated.size;
     return (
-      <div className="w-full max-w-2xl mx-auto p-4 text-center space-y-6">
+      <div className="w-full max-w-2xl mx-auto p-1 sm:p-4 text-center space-y-6">
         <Trophy className="w-16 h-16 text-yellow-400 mx-auto" />
-        <h2 className="text-3xl font-bold">{t("You defeated {{defeated}}/{{total}} arguments!", { defeated: totalDefeated, total: bossLevels.length })}</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold">{t("You defeated {{defeated}}/{{total}} arguments!", { defeated: totalDefeated, total: bossLevels.length })}</h2>
         <p className="text-lg text-stone-400">
           {totalDefeated === bossLevels.length
             ? t("Perfect score. Every pro-MDR argument dismantled.")
             : t("Most of them dismantled. The remaining would fall too with more data.")}
         </p>
-        <div className="bg-gradient-to-r from-emerald-900/40 to-emerald-800/30 rounded-xl p-6 border border-emerald-700/50 space-y-4">
+        <div className="bg-gradient-to-r from-emerald-900/40 to-emerald-800/30 rounded-xl p-4 sm:p-6 border border-emerald-700/50 space-y-4">
           <h3 className="text-xl font-bold text-emerald-300">{t("What You Can Do")}</h3>
           <div className="grid gap-3 text-left">
             <div className="p-3 bg-stone-800/50 rounded-lg">
@@ -168,7 +168,7 @@ export default function BossFight() {
   if (!level) return null;
 
   return (
-    <div className="w-full max-w-3xl mx-auto p-4 space-y-6">
+    <div className="w-full max-w-3xl mx-auto p-1 sm:p-4 space-y-6">
       {/* Progress bar */}
       <div className="flex items-center gap-2">
         <div className="flex-1 h-2 bg-stone-700 rounded-full overflow-hidden">
@@ -182,14 +182,14 @@ export default function BossFight() {
         </span>
       </div>
 
-      <div className="flex items-center gap-3 text-2xl font-bold">
+      <div className="flex items-center gap-3 text-xl sm:text-2xl font-bold">
         <Swords className="w-7 h-7 text-rose-400" />
         <span>{t("Boss Fight")} : <span className="text-rose-300">{level.id}</span></span>
         {defeated.has(level.id) && <ShieldCheck className="w-5 h-5 text-emerald-400" />}
       </div>
 
       {/* Boss claim */}
-      <div className="bg-red-900/20 border border-red-800/40 rounded-xl p-6">
+      <div className="bg-red-900/20 border border-red-800/40 rounded-xl p-4 sm:p-6">
         <div className="flex items-start gap-3">
           <AlertTriangle className="w-6 h-6 text-red-400 flex-shrink-0 mt-1" />
           <div>
@@ -215,7 +215,7 @@ export default function BossFight() {
       ) : (
         <div className="space-y-4 animate-in fade-in">
           {/* Player response */}
-          <div className="bg-emerald-900/20 border border-emerald-800/40 rounded-xl p-6">
+          <div className="bg-emerald-900/20 border border-emerald-800/40 rounded-xl p-4 sm:p-6">
             <div className="flex items-start gap-3">
               <Shield className="w-6 h-6 text-emerald-400 flex-shrink-0 mt-1" />
               <div>
@@ -234,7 +234,7 @@ export default function BossFight() {
             <div className="mt-2 text-xs text-stone-500 italic">{t("Source: {{source}}", { source: t(level.sourceNote) })}</div>
           </details>
 
-          <div className="flex justify-between items-center">
+          <div className="flex flex-col gap-3 sm:flex-row sm:justify-between sm:items-center">
             <button
               onClick={handleSkip}
               className="flex items-center gap-1 text-sm text-stone-400 hover:text-stone-200"
@@ -244,7 +244,7 @@ export default function BossFight() {
             </button>
             <button
               onClick={handleNext}
-              className="px-6 py-2 bg-emerald-700 hover:bg-emerald-600 rounded-lg font-medium transition-all"
+              className="px-6 py-2 bg-emerald-700 hover:bg-emerald-600 rounded-lg font-medium transition-all text-center"
             >
               {currentLevel < bossLevels.length - 1 ? t("Next Boss »") : t("See Results!")}
             </button>

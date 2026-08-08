@@ -29,16 +29,16 @@ export default function App() {
       {/* Hero */}
       <header className="relative border-b border-stone-800/60 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(220,38,38,0.08),transparent_50%)]" />
-        <div className="relative max-w-5xl mx-auto px-4 pt-12 pb-6">
+        <div className="relative max-w-5xl mx-auto px-3 sm:px-6 pt-8 sm:pt-12 pb-6">
           <div className="flex items-center gap-2 text-red-400 text-sm font-medium mb-3">
             <ChartBar className="size-4" />
             <span>{t("CashlessConsumer Investigation")}</span>
           </div>
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight text-balance">
+          <h1 className="text-[2.65rem] sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.05] text-balance break-words">
             {t("The UPI MDR")} {" "}
             <span className="text-red-400">{t("Tax on You")}</span>
           </h1>
-          <p className="mt-4 text-lg md:text-xl text-stone-400 max-w-2xl">
+          <p className="mt-4 text-base sm:text-lg md:text-xl text-stone-400 max-w-2xl leading-relaxed">
             {t("The government wants to reintroduce MDR on UPI — a fee on every digital payment you make. Use the tools below to see how much it will cost you, and what you can do about it.")}
           </p>
           <nav className="mt-8 flex gap-2 flex-wrap" aria-label={t("Primary navigation")}>
@@ -48,7 +48,7 @@ export default function App() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                  className={`flex items-center gap-1.5 px-3 sm:px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                     activeTab === tab.id
                       ? "bg-red-600 text-white shadow-lg shadow-red-600/20"
                       : "bg-stone-900 text-stone-300 hover:bg-stone-800 hover:text-stone-100"
@@ -79,7 +79,7 @@ export default function App() {
         </div>
       </header>
 
-      <main className="max-w-5xl mx-auto px-4 py-8">
+      <main className="max-w-5xl mx-auto px-3 sm:px-6 py-6 sm:py-8">
         {activeTab === "calculator" && (
           <>
             <IntroSection />
