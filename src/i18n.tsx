@@ -18,6 +18,7 @@ export const locales: { code: Locale; label: string; nativeLabel: string }[] = [
 
 import hi from "./locales/hi";
 import ta from "./locales/ta";
+import mr from "./locales/mr";
 import bn from "./locales/bn";
 import te from "./locales/te";
 
@@ -25,6 +26,7 @@ const translations: Partial<Record<Locale, TranslationDictionary>> = {
   en: {},
   hi,
   ta,
+  mr,
   bn,
   te,
 };
