@@ -1,5 +1,6 @@
 import { Calendar, ChevronDown } from "lucide-react";
 import { useState } from "react";
+import { useI18n } from "../i18n";
 
 interface TimelineEntry {
   date: string;
@@ -81,16 +82,17 @@ const kindStyle: Record<TimelineEntry["kind"], string> = {
 
 export default function TimelineSection() {
   const [expanded, setExpanded] = useState<number | null>(null);
+  const { t } = useI18n();
 
   return (
     <div className="w-full max-w-4xl mx-auto p-4">
       <div className="mb-8">
         <h2 className="text-2xl font-bold flex items-center gap-2">
           <Calendar className="w-6 h-6 text-red-400" />
-          The MDR on UPI — Timeline
+          {t("The MDR on UPI — Timeline")}
         </h2>
         <p className="text-sm text-stone-400 mt-2">
-          From free public rail to fee-charging utility. Tap an entry to expand.
+          {t("From free public rail to fee-charging utility. Tap an entry to expand.")}
         </p>
       </div>
 
@@ -111,7 +113,7 @@ export default function TimelineSection() {
                 <div className="flex items-center gap-3 flex-wrap">
                   <span className="text-xs font-mono text-stone-500">{entry.date}</span>
                   <span className={`text-[10px] font-bold uppercase tracking-wide px-2 py-0.5 rounded border ${kindStyle[entry.kind]}`}>
-                    {entry.kind}
+                    {t(entry.kind)}
                   </span>
                   <span className="font-semibold text-stone-200">{entry.title}</span>
                 </div>
@@ -120,7 +122,7 @@ export default function TimelineSection() {
                 />
               </div>
               {expanded === i && (
-                <p className="mt-3 text-sm text-stone-400 leading-relaxed">{entry.body}</p>
+                <p className="mt-3 text-sm text-stone-400 leading-relaxed">{t(entry.body)}</p>
               )}
             </button>
           </div>

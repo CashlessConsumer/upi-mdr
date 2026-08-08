@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Swords, Shield, ShieldCheck, SkipForward, Trophy, AlertTriangle } from "lucide-react";
+import { useI18n } from "../i18n";
 
 interface BossLevel {
   id: string;
@@ -94,6 +95,7 @@ export default function BossFight() {
   const [defeated, setDefeated] = useState<Set<string>>(new Set());
   const [showReality, setShowReality] = useState(false);
   const [gameOver, setGameOver] = useState(false);
+  const { t } = useI18n();
 
   const level = bossLevels[currentLevel];
 
@@ -125,26 +127,26 @@ export default function BossFight() {
     return (
       <div className="w-full max-w-2xl mx-auto p-4 text-center space-y-6">
         <Trophy className="w-16 h-16 text-yellow-400 mx-auto" />
-        <h2 className="text-3xl font-bold">You defeated {totalDefeated}/{bossLevels.length} arguments!</h2>
+        <h2 className="text-3xl font-bold">{t("You defeated {{defeated}}/{{total}} arguments!", { defeated: totalDefeated, total: bossLevels.length })}</h2>
         <p className="text-lg text-stone-400">
           {totalDefeated === bossLevels.length
-            ? "Perfect score. Every pro-MDR argument dismantled."
-            : "Most of them dismantled. The remaining would fall too with more data."}
+            ? t("Perfect score. Every pro-MDR argument dismantled.")
+            : t("Most of them dismantled. The remaining would fall too with more data.")}
         </p>
         <div className="bg-gradient-to-r from-emerald-900/40 to-emerald-800/30 rounded-xl p-6 border border-emerald-700/50 space-y-4">
-          <h3 className="text-xl font-bold text-emerald-300">What You Can Do</h3>
+          <h3 className="text-xl font-bold text-emerald-300">{t("What You Can Do")}</h3>
           <div className="grid gap-3 text-left">
             <div className="p-3 bg-stone-800/50 rounded-lg">
-              <strong className="text-rose-300">1. Write to your MP</strong>
-              <p className="text-sm text-stone-400 mt-1">Template in the Act section below. Demand a recorded vote and Standing Committee review.</p>
+              <strong className="text-rose-300">{t("1. Write to your MP")}</strong>
+              <p className="text-sm text-stone-400 mt-1">{t("Template in the Act section below. Demand a recorded vote and Standing Committee review.")}</p>
             </div>
             <div className="p-3 bg-stone-800/50 rounded-lg">
-              <strong className="text-rose-300">2. File an RTI</strong>
-              <p className="text-sm text-stone-400 mt-1">Ask NPCI/RBI for the cost study that justified MDR. It should be public.</p>
+              <strong className="text-rose-300">{t("2. File an RTI")}</strong>
+              <p className="text-sm text-stone-400 mt-1">{t("Ask NPCI/RBI for the cost study that justified MDR. It should be public.")}</p>
             </div>
             <div className="p-3 bg-stone-800/50 rounded-lg">
-              <strong className="text-rose-300">3. Share this site</strong>
-              <p className="text-sm text-stone-400 mt-1">Not everyone knows they're about to be taxed. Send this to someone who uses UPI daily.</p>
+              <strong className="text-rose-300">{t("3. Share this site")}</strong>
+              <p className="text-sm text-stone-400 mt-1">{t("Not everyone knows they're about to be taxed. Send this to someone who uses UPI daily.")}</p>
             </div>
           </div>
         </div>
@@ -157,7 +159,7 @@ export default function BossFight() {
           }}
           className="px-6 py-2 bg-stone-700 hover:bg-stone-600 rounded-full text-sm"
         >
-          Fight Again
+          {t("Fight Again")}
         </button>
       </div>
     );
@@ -176,13 +178,13 @@ export default function BossFight() {
           />
         </div>
         <span className="text-xs text-stone-400">
-          Level {currentLevel + 1}/{bossLevels.length}
+          {t("Level {{current}}/{{total}}", { current: currentLevel + 1, total: bossLevels.length })}
         </span>
       </div>
 
       <div className="flex items-center gap-3 text-2xl font-bold">
         <Swords className="w-7 h-7 text-rose-400" />
-        <span>Boss Fight: <span className="text-rose-300">{level.id}</span></span>
+        <span>{t("Boss Fight")} : <span className="text-rose-300">{level.id}</span></span>
         {defeated.has(level.id) && <ShieldCheck className="w-5 h-5 text-emerald-400" />}
       </div>
 
@@ -191,8 +193,8 @@ export default function BossFight() {
         <div className="flex items-start gap-3">
           <AlertTriangle className="w-6 h-6 text-red-400 flex-shrink-0 mt-1" />
           <div>
-            <div className="text-xs text-stone-500 mb-1 uppercase tracking-wider">The Argument</div>
-            <div className="text-lg font-semibold text-red-300">{level.boss}</div>
+            <div className="text-xs text-stone-500 mb-1 uppercase tracking-wider">{t("The Argument")}</div>
+            <div className="text-lg font-semibold text-red-300">{t(level.boss)}</div>
           </div>
         </div>
       </div>
@@ -200,14 +202,14 @@ export default function BossFight() {
       {!showReality ? (
         <div className="text-center space-y-4">
           <div className="text-stone-400 text-sm">
-            How would you respond? Click the sword to see the counter.
+            {t("How would you respond? Click the sword to see the counter.")}
           </div>
           <button
             onClick={handleDefeat}
             className="px-8 py-3 bg-rose-700 hover:bg-rose-600 rounded-xl text-lg font-bold transition-all shadow-lg shadow-rose-900/30 flex items-center gap-2 mx-auto"
           >
             <Swords className="w-5 h-5" />
-            Strike Down!
+            {t("Strike Down!")}
           </button>
         </div>
       ) : (
@@ -217,8 +219,8 @@ export default function BossFight() {
             <div className="flex items-start gap-3">
               <Shield className="w-6 h-6 text-emerald-400 flex-shrink-0 mt-1" />
               <div>
-                <div className="text-xs text-stone-500 mb-1 uppercase tracking-wider">The Reality</div>
-                <div className="text-base leading-relaxed text-emerald-200">{level.playerDefeat}</div>
+                <div className="text-xs text-stone-500 mb-1 uppercase tracking-wider">{t("The Reality")}</div>
+                <div className="text-base leading-relaxed text-emerald-200">{t(level.playerDefeat)}</div>
               </div>
             </div>
           </div>
@@ -226,10 +228,10 @@ export default function BossFight() {
           {/* Reality detail */}
           <details className="bg-stone-800/50 rounded-xl p-4 border border-stone-700/50">
             <summary className="text-sm font-medium cursor-pointer text-stone-300 hover:text-stone-100">
-              Why this matters
+              {t("Why this matters")}
             </summary>
-            <div className="mt-3 text-sm text-stone-400 leading-relaxed">{level.reality}</div>
-            <div className="mt-2 text-xs text-stone-500 italic">Source: {level.sourceNote}</div>
+            <div className="mt-3 text-sm text-stone-400 leading-relaxed">{t(level.reality)}</div>
+            <div className="mt-2 text-xs text-stone-500 italic">{t("Source: {{source}}", { source: t(level.sourceNote) })}</div>
           </details>
 
           <div className="flex justify-between items-center">
@@ -238,13 +240,13 @@ export default function BossFight() {
               className="flex items-center gap-1 text-sm text-stone-400 hover:text-stone-200"
             >
               <SkipForward className="w-4 h-4" />
-              Skip to next
+              {t("Skip to next")}
             </button>
             <button
               onClick={handleNext}
               className="px-6 py-2 bg-emerald-700 hover:bg-emerald-600 rounded-lg font-medium transition-all"
             >
-              {currentLevel < bossLevels.length - 1 ? "Next Boss »" : "See Results!"}
+              {currentLevel < bossLevels.length - 1 ? t("Next Boss »") : t("See Results!")}
             </button>
           </div>
         </div>
