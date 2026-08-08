@@ -17,10 +17,12 @@ export const locales: { code: Locale; label: string; nativeLabel: string }[] = [
 ];
 
 import hi from "./locales/hi";
+import ta from "./locales/ta";
 
 const translations: Partial<Record<Locale, TranslationDictionary>> = {
   en: {},
   hi,
+  ta,
 };
 
 function getInitialLocale(): Locale {
