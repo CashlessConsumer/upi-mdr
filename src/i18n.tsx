@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 
 export type Locale = "en" | "hi" | "ta" | "te" | "bn" | "mr" | "gu" | "kn" | "ml" | "pa";
+export type TranslationDictionary = Record<string, string>;
 
 export const locales: { code: Locale; label: string; nativeLabel: string }[] = [
   { code: "en", label: "English", nativeLabel: "English" },
@@ -15,10 +16,11 @@ export const locales: { code: Locale; label: string; nativeLabel: string }[] = [
   { code: "pa", label: "Punjabi", nativeLabel: "ਪੰਜਾਬੀ" },
 ];
 
-type TranslationDictionary = Record<string, string>;
+import hi from "./locales/hi";
 
 const translations: Partial<Record<Locale, TranslationDictionary>> = {
   en: {},
+  hi,
 };
 
 function getInitialLocale(): Locale {
