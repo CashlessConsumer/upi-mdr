@@ -73,7 +73,7 @@ export default function MDRCalculator() {
                   : "bg-stone-700/50 text-stone-300 hover:bg-stone-700"
               }`}
             >
-              {t(b.label.split(" —")[0])}
+              {t(b.label)}
             </button>
           ))}
         </div>

@@ -115,7 +115,7 @@ export default function TimelineSection() {
                   <span className={`text-[10px] font-bold uppercase tracking-wide px-2 py-0.5 rounded border ${kindStyle[entry.kind]}`}>
                     {t(entry.kind)}
                   </span>
-                  <span className="font-semibold text-stone-200">{entry.title}</span>
+                  <span className="font-semibold text-stone-200">{t(entry.title)}</span>
                 </div>
                 <ChevronDown
                   className={`size-4 text-stone-500 flex-shrink-0 transition-transform ${expanded === i ? "rotate-180" : ""}`}

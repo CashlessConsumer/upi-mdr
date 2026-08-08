@@ -17,18 +17,19 @@ Consumer-advocacy microsite on the proposed UPI MDR (Aug 2026). Built with Vite 
 
 ## Internationalization
 
-The site is locale-ready before translations are added. All visible interface and
-content strings pass through `src/i18n.tsx`, which provides:
+The site now ships translated content for all ten supported locales. All visible
+interface and content strings pass through `src/i18n.tsx`, which provides:
 
 - Locale selection for English, Hindi, Tamil, Telugu, Bengali, Marathi, Gujarati, Kannada, Malayalam, and Punjabi
 - Browser-language detection with localStorage persistence (`upi-mdr-locale`)
-- Safe English fallback for languages whose dictionary is not translated yet
+- Safe English fallback for missing future keys
 - Dynamic document language and page title updates
 
-To add a language, populate `translations[locale]` in `src/i18n.tsx` using the
-existing English string passed to `t()` as the key. Keep numbers, rates, and
-policy assumptions in `src/data/mdr-data.ts`; translate only the presentation
-strings and content copy.
+Each language dictionary lives in `src/locales/<locale>.ts` and is registered in
+`src/i18n.tsx`. To revise a translation, edit only the matching locale module
+using the existing English string passed to `t()` as the key. Keep numbers,
+rates, and policy assumptions in `src/data/mdr-data.ts`; translate only the
+presentation strings and content copy.
 
 ## Local dev
 
